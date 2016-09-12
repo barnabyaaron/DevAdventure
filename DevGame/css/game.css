@@ -15,7 +15,7 @@
 #gameInfo { position: absolute; right: 45px; top: 70px; text-align: right; }
 #gameInfo h3 { margin: 5px; }
 
-#gameCoreCommands { position: absolute; bottom: 80px; right: 4  5px; text-align: right; }
+#gameCoreCommands { position: absolute; bottom: 80px; right: 45px; text-align: right; }
 #gameCoreCommands h3 { margin: 5px; }
 
 #gameCommand { position: absolute; bottom: 20px; }
