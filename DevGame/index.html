@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DevGame</title>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link href="css/font-awesome.css" rel="stylesheet" /> 
+    <link href="css/game.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrapper text-center">
+        <h1>Dev Game</h1>
+
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#devGameModal">Start Adventure</button>
+    </div>
+
+    <div class="modal" id="devGameModal" tabindex="-1" role="dialog" aria-labelledby="devGameModalLabel" aria-hidden="true">
+        <div class="modal-dialog game-modal">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="screenContainer">
+                        <div class="gamePlayerBar">
+                            <div>Room: <div id="gameRoom">Entrance</div></div>
+                            <div class="gameBarRight">Health: <div id="gamePlayerHP"></div></div>
+                            <div class="gameBarRight">Attack: <div id="gamePlayerAttack"></div></div>
+                        </div>
+
+                        <div id="gameDisplay">
+                            <div id="gameInfo">
+                                <h3>Exits</h3>
+                                <b>west</b> - Unknown
+                            </div>
+
+                            (Story designed and written by Aaron Barnaby 2016)<br />
+                            Enter commands to progress through the story, you can always enter the core commands in the bottom right at any time.<br />
+                            Each room will sometimes have unique commands but your have to work these out, sometimes <b>help</b> can help you.
+                            <br /><br />
+                            You wake up in a room with and old <b>man</b> sat on a chair in the corner reading a <b>book</b>, there is one door to the <b>west</b>.<br />
+                            A small <b>kitchen knife</b> lies on a table next to the man.<br />
+
+                            <div id="gameCommand">
+                                &gt; <input type="text" id="gameInputTxt" autofocus />
+                            </div>
+
+                            <div id="gameCoreCommands">
+                                <h3>Core Commands</h3>
+                                <b>go [direction]</b>  (example: <b>go north</b>)<br />
+                                <b>[direction]</b>  (example: <b>north</b> or <b>n</b>)<br />
+                                <b>go back</b> - return to previous room<br />
+                                <b>inventory</b>  - view held items<br />
+                                <b>look</b> - look around room<br />
+                                <b>help</b> - help text<br />
+                                <b>restart</b> - restart game
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts/jquery-3.1.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="Scripts/devgame.js"></script>
+</body>
+</html>
