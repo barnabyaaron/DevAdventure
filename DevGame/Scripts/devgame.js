@@ -856,12 +856,12 @@
     var inLift = false;
     var lift = new rooms(
         "Lift",
-        "You enter the lift and press the only lit button (floor 3).<br />As the lift moves you notice the lights flickering, the lift dings for floor 3 however the door doesn't open.",
+        "You enter the lift and press the only lit button (floor 3).<br />As the lift moves you notice the lights flickering, the lift dings for floor 3 however the <b>door</b> doesn't open.",
         "You need to find a way to <b>open</b> the door.",
         [],
         [
             [
-                ['open door', 'use machete on door'],
+                ['force open door', 'use machete on door'],
                 function () {
                     sendMessage("You wedge your machete in the door and using it like a crowbar you open the door, however just as the door swings open your machete snaps in half.");
                     player.inventory.remove(machete);
@@ -873,16 +873,12 @@
                     go("east");
                 }
             ]
-        ],
-        [
-            [
-                function () {
-                    inLift = true;
-                }
-            ]
         ]
     );
-    reception.addExit("up", lift);
+    reception.addExit("up", lift, [function() {
+        inLift = true;
+        return true;
+    }]);
 
     var thirdfloor = new rooms(
         "3rd Floor",
@@ -948,7 +944,7 @@
                     sendMessage("<br /><strong>Chinese Boy</strong> I have married many women, but have never been married.  Who am I?");
                     inRiddle = true;
                     riddleFunction = function (answer) {
-                        if ($.inArray(answer, ['preist', 'a preist']) > -1) {
+                        if ($.inArray(answer, ['priest', 'a priest']) > -1) {
                             sendMessage("<strong>Chinese Boy</strong> CORRECT!  Next Riddle.");
 
                             sendMessage("<strong>Chinese Boy</strong> What belongs to you but others use it more than you do?");
@@ -1562,14 +1558,17 @@
         var command = input.val();
         input.val(''); // Clear input
 
-        if (isGameOver && command != "refresh") {
+        if (isGameOver && command != "restart") {
             // Game is over and you must enter restart.
             return sendMessage("<br />The game is over, please refresh your browser to restart the game.")
         }
 
-        sendMessage(""); // Space
-        sendMessage("> " + command);
-        sendMessage(""); // Space
+        if (command != "lily archie barnaby") {
+            sendMessage(""); // Space
+            sendMessage("> " + command);
+            sendMessage(""); // Space
+        }
+        
 
         parseCommand(command);
     }
@@ -1577,6 +1576,7 @@
     input.on('keypress', function (event) {
         if (event.which === 13) {
             // Enter Submited
+            event.preventDefault();
             submitCommand();
         }
     });
